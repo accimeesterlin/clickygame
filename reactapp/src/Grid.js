@@ -10,8 +10,7 @@ class Grid extends Component {
         this.state = {
             name: this.props.name,
             clicked: this.props.clicked,
-            imgUrl: this.props.imgUrl,
-            scoreUpdate: this.props.scoreUpdate
+            imgUrl: this.props.imgUrl
         }
     };
 
@@ -26,11 +25,13 @@ class Grid extends Component {
 
     // renders data to the page (ultimately through index.js)
     render() {
+
+        const {clicked, name, imgUrl} = this.state; // destructuring
         return (
             // creates a 'tile' with a click event that triggers the scoreUpdate function (from App.js)
-            <div className="tile" onClick={() => this.state.scoreUpdate(this.state.name, this.state.clicked)} >
+            <div className="tile" onClick={() => this.props.scoreUpdate(name, clicked)} >
 
-                <img src={this.state.imgUrl} alt={this.state.name} className="tile-img" />
+                <img src={imgUrl} alt={name} className="tile-img" />
 
             </div>
         );
